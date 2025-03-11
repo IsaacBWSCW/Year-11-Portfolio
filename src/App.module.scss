@@ -1,7 +1,7 @@
-$animation: cubic-bezier(0.9, 0, 0.1, 1);
+$animation: ease-in-out;
 
 .fadeOut {
-    animation: fadeOut 500ms $animation forwards;
+    animation: fadeOut 200ms $animation forwards;
 }
 
 @keyframes fadeOut {
@@ -18,7 +18,7 @@ $animation: cubic-bezier(0.9, 0, 0.1, 1);
 }
 
 .fadeIn {
-    animation: fadeIn 500ms $animation forwards;
+    animation: fadeIn 200ms $animation forwards;
 }
 
 @keyframes fadeIn {

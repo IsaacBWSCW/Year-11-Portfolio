@@ -21,8 +21,8 @@ function App() {
             setTimeout(() => {
                 setCurrentPage(page);
                 setChangingPage(false);
-            }, 500);
-        }, 800);
+            }, 200);
+        }, 250);
     };
 
     const canvasRef = React.useRef<HTMLCanvasElement | null>(null);
