@@ -17,7 +17,9 @@ function NavBar({ setCurrentPage }: NavBarProps) {
                 <button onClick={() => setCurrentPage(<Page1 />)}>
                     Something1
                 </button>
-                <button>Something2</button>
+                <button onClick={() => setCurrentPage(<Page1 />)}>
+                    Something2
+                </button>
             </div>
         </nav>
     );
