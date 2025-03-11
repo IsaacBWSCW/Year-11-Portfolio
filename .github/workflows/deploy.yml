@@ -1,0 +1,24 @@
+name: Deploy GH Pages
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Install dependencies
+      run: sudo apt install -y nodejs npm
+
+    - name: Install NPM dependencies
+      run: npm install
+
+    - name: Build
+      run: npm run deploy
