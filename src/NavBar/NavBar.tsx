@@ -1,26 +1,20 @@
 import { ReactElement } from "react";
+
+import styles from "./NavBar.module.scss";
+
 import HomePage from "../HomePage/HomePage";
 import Page1 from "../Page1/Page1";
-import "./NavBar.css";
 
 interface NavBarProps {
-    setCurrentPage: (setCurrentPage: ReactElement) => void;
+    changePage: (page: ReactElement) => void;
 }
 
-function NavBar({ setCurrentPage }: NavBarProps) {
+function NavBar({ changePage }: NavBarProps) {
     return (
-        <nav className="navBar">
-            <div className="navBarDiv">
-                <button onClick={() => setCurrentPage(<HomePage />)}>
-                    Home
-                </button>
-                <button onClick={() => setCurrentPage(<Page1 />)}>
-                    Something1
-                </button>
-                <button onClick={() => setCurrentPage(<Page1 />)}>
-                    Something2
-                </button>
-            </div>
+        <nav className={styles.navBar}>
+            <button onClick={() => changePage(<HomePage />)}>Home</button>
+            <button onClick={() => changePage(<Page1 />)}>Something1</button>
+            <button onClick={() => changePage(<Page1 />)}>Something2</button>
         </nav>
     );
 }

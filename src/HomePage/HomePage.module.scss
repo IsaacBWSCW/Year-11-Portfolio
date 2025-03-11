@@ -12,10 +12,9 @@
     padding: 0.25cm;
 
     box-shadow: 0cm 0.65cm 1cm rgba(0, 0, 0, 50%);
-}
 
-.mainDiv * {
-    color: white;
-
-    flex-grow: 100%;
+    * {
+        color: white;
+        flex-grow: 100%;
+    }
 }
