@@ -20,8 +20,8 @@ function App() {
             setTimeout(() => {
                 setCurrentPage(page);
                 setChangingPage(false);
-            }, 250);
-        }, 250);
+            }, 500);
+        }, 800);
     }
 
     return (

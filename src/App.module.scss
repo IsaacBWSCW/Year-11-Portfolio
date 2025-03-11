@@ -1,25 +1,33 @@
 .fadeOut {
-    animation: fadeOut 250ms ease-out forwards;
+    animation: fadeOut 500ms ease-out forwards;
 }
 
 @keyframes fadeOut {
     from {
-        opacity: 1;
+        opacity: 100%;
+        transform: scale(100%);
+        clip-path: circle(100% at center);
     }
     to {
-        opacity: 0;
+        opacity: 0%;
+        transform: scale(50%);
+        clip-path: circle(0% at center);
     }
 }
 
 .fadeIn {
-    animation: fadeIn 250ms ease-out forwards;
+    animation: fadeIn 500ms ease-out forwards;
 }
 
 @keyframes fadeIn {
     from {
-        opacity: 0;
+        opacity: 0%;
+        transform: scale(50%);
+        clip-path: circle(0% at center);
     }
     to {
-        opacity: 1;
+        opacity: 100%;
+        transform: scale(100%);
+        clip-path: circle(100% at center);
     }
 }
