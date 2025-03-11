@@ -3,8 +3,8 @@ import React from "react";
 import "./App.scss";
 import styles from "./App.module.scss";
 
-import HomePage from "./HomePage/HomePage";
-import NavBar from "./NavBar/NavBar";
+import HomePage from "./HomePage/Main";
+import NavBar from "./NavBar/Main";
 
 function App() {
     const [currentPage, setCurrentPage] = React.useState(<HomePage />);
