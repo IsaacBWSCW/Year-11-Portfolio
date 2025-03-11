@@ -23,7 +23,8 @@
         font-size: 1.5rem;
 
         $time: 50ms;
-        transition: transform $time ease-in-out, text-shadow $time ease-in-out;
+        $animation: ease-in-out;
+        transition: transform $time $animation, text-shadow $time $animation;
         text-shadow: 0cm 8px 5px rgba(150, 150, 150, 100%);
     }
 
