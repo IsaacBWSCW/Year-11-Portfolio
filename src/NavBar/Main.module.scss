@@ -2,11 +2,12 @@
     background-color: #101010;
     margin: 2% 5%;
 
-    display: flex;
+    display: inline-flex;
 
-    justify-content: space-evenly;
+    justify-content: left;
     align-items: center;
     flex-direction: row;
+    gap: 20px;
 
     border-radius: 0.5cm;
     padding: 0.5cm;
@@ -21,11 +22,6 @@
 
         font-weight: 600;
         font-size: 1.5rem;
-
-        $time: 50ms;
-        $animation: ease-in-out;
-        transition: transform $time $animation, text-shadow $time $animation;
-        text-shadow: 0cm 8px 5px rgba(150, 150, 150, 100%);
     }
 
     button:hover {
@@ -33,9 +29,13 @@
     }
 
     button:active {
-        transition: transform 15ms ease-in;
+        transform: scale(0.95);
+    }
 
-        transform: scale(0.9);
-        text-shadow: none;
+    .active {
+        color: white;
+    }
+    .notactive {
+        color: #858585;
     }
 }

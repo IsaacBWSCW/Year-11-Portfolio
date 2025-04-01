@@ -1,21 +1,33 @@
-import { ReactElement } from "react";
+import React, { ReactElement } from "react";
 
 import styles from "./Main.module.scss";
 
 import HomePage from "../HomePage/Main";
-import Page1 from "../Page1/Main";
-import Page2 from "../Page2/Main";
+import ProjectsPage from "../ProjectsPage/Main";
 
 interface NavBarProps {
     changePage: (page: ReactElement) => void;
+    currentChangingPage: React.RefObject<ReactElement>;
 }
 
-function NavBar({ changePage }: NavBarProps) {
+function NavBar({ changePage, currentChangingPage }: NavBarProps) {
     return (
         <nav className={styles.navBar}>
-            <button onClick={() => changePage(<HomePage />)}>Home</button>
-            <button onClick={() => changePage(<Page1 />)}>Page1</button>
-            <button onClick={() => changePage(<Page2 />)}>Page2</button>
+            <button
+                onClick={() => changePage(<HomePage />)}
+                className={
+                    currentChangingPage.current.type === HomePage ? styles.active : styles.notactive
+                }
+            >
+                Home
+            </button>
+
+            <button
+                onClick={() => changePage(<ProjectsPage />)}
+                className={
+                    currentChangingPage.current.type === ProjectsPage ? styles.active : styles.notactive
+                }
+            > Projects </button>
         </nav>
     );
 }

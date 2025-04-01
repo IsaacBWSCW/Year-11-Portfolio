@@ -1,12 +1,6 @@
 .mainDiv {
     background-color: #101010;
-    margin: 10% 15%;
-
-    display: flex;
-
-    justify-content: space-evenly;
-    align-items: center;
-    flex-direction: row;
+    margin: 5% 10%;
 
     border-radius: 0.25cm;
     padding: 0.25cm;
@@ -15,6 +9,9 @@
 
     * {
         color: white;
-        flex-grow: 100%;
+    }
+
+    h1 {
+        text-align: center;
     }
 }

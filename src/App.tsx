@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactElement } from "react";
 import { createNoise3D } from "simplex-noise";
 
 import "./App.scss";
@@ -9,11 +9,13 @@ import NavBar from "./NavBar/Main";
 
 function App() {
     const [currentPage, setCurrentPage] = React.useState(<HomePage />);
+    const currentChangingPage = React.useRef<ReactElement>(currentPage);
     const [changingPage, setChangingPage] = React.useState(false);
 
     const changePage = (page: React.ReactElement) => {
         if (changingPage) return;
 
+        currentChangingPage.current = page;
         setChangingPage(true);
         setCurrentPage(<div className={styles.fadeOut}>{currentPage}</div>);
         setTimeout(() => {
@@ -21,8 +23,8 @@ function App() {
             setTimeout(() => {
                 setCurrentPage(page);
                 setChangingPage(false);
-            }, 200);
-        }, 250);
+            }, 100);
+        }, 100);
     };
 
     const canvasRef = React.useRef<HTMLCanvasElement | null>(null);
@@ -45,7 +47,7 @@ function App() {
             return value;
         };
 
-        const scale = 0.0025;
+        const scale = 0.000625;
         const speed = 1 / 16;
         const resolution = 6 / 100;
 
@@ -110,7 +112,10 @@ function App() {
     return (
         <div>
             <canvas ref={canvasRef} />
-            <NavBar changePage={changePage} />
+            <NavBar
+                currentChangingPage={currentChangingPage}
+                changePage={changePage}
+            />
             {currentPage}
         </div>
     );

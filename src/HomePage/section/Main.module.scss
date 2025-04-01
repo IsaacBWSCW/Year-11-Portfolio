@@ -1,0 +1,31 @@
+.section {
+    cursor: pointer;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 1%;
+    
+    transition: 0.3s ease-out;
+    background-color: #151515;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.section:hover {
+    border: 1px solid rgba($color: #000000, $alpha: 0.0);
+    background-color: #202020;
+}
+
+@mixin sharedStyles {
+    transition: 0.2s ease-out;
+    background-color: transparent;
+    overflow: hidden;
+}
+
+.sectionContentsOpen {
+    @include sharedStyles;
+    height: 15vw;
+}
+
+.sectionContentsClosed {
+    @include sharedStyles;
+    height: 0px;
+}

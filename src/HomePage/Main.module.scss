@@ -2,11 +2,7 @@
     background-color: #101010;
     margin: 10% 15%;
 
-    display: flex;
-
-    justify-content: space-evenly;
-    align-items: center;
-    flex-direction: row;
+    text-align: center;
 
     border-radius: 0.25cm;
     padding: 0.25cm;
@@ -15,6 +11,11 @@
 
     * {
         color: white;
-        flex-grow: 100%;
+    }
+
+    p {
+        margin: 10px;
+        text-align: left;
+        background-color: #202020;
     }
 }

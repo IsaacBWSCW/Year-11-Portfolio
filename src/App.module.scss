@@ -1,35 +1,31 @@
 $animation: ease-in-out;
 
 .fadeOut {
-    animation: fadeOut 200ms $animation forwards;
+    animation: fadeOut 100ms $animation forwards;
 }
 
 @keyframes fadeOut {
     0% {
-        opacity: 100%;
-        transform: scale(100%);
-        clip-path: circle(100% at center);
+        filter: blur(0.0px);
+        opacity: 1;
     }
     100% {
-        opacity: 0%;
-        transform: scale(50%);
-        clip-path: circle(0% at center);
+        filter: blur(20.0px);
+        opacity: 0;
     }
 }
 
 .fadeIn {
-    animation: fadeIn 200ms $animation forwards;
+    animation: fadeIn 100ms $animation forwards;
 }
 
 @keyframes fadeIn {
     0% {
-        opacity: 0%;
-        transform: scale(50%);
-        clip-path: circle(0% at center);
+        filter: blur(20.0px);
+        opacity: 0;
     }
     100% {
-        opacity: 100%;
-        transform: scale(100%);
-        clip-path: circle(100% at center);
+        filter: blur(0.0px);
+        opacity: 1;
     }
 }
