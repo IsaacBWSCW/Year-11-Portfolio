@@ -14,7 +14,7 @@
 
     box-shadow: 0cm 0.65cm 1cm rgba(0, 0, 0, 25%);
 
-    button {
+    .button {
         border: none;
         background-color: transparent;
         color: white;
@@ -24,11 +24,11 @@
         font-size: 1.5rem;
     }
 
-    button:hover {
+    .button:hover {
         cursor: pointer;
     }
 
-    button:active {
+    .button:active {
         transform: scale(0.95);
     }
 

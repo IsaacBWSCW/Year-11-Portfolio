@@ -1,35 +1,32 @@
-import React, { ReactElement } from "react";
+import { NavLink } from "react-router-dom";
 
 import styles from "./Main.module.scss";
 
-import HomePage from "../HomePage/Main";
-import ProjectsPage from "../ProjectsPage/Main";
-
-interface NavBarProps {
-    changePage: (page: ReactElement) => void;
-    currentChangingPage: React.RefObject<ReactElement>;
-}
-
-function NavBar({ changePage, currentChangingPage }: NavBarProps) {
+export default function NavBar() {
     return (
         <nav className={styles.navBar}>
-            <button
-                onClick={() => changePage(<HomePage />)}
-                className={
-                    currentChangingPage.current.type === HomePage ? styles.active : styles.notactive
+            <NavLink
+                to="/"
+                end
+                className={({ isActive }) =>
+                    [styles.button, isActive ? styles.active : styles.notactive]
+                        .filter(Boolean)
+                        .join(" ")
                 }
             >
                 Home
-            </button>
+            </NavLink>
 
-            <button
-                onClick={() => changePage(<ProjectsPage />)}
-                className={
-                    currentChangingPage.current.type === ProjectsPage ? styles.active : styles.notactive
+            <NavLink
+                to="/projects"
+                className={({ isActive }) =>
+                    [styles.button, isActive ? styles.active : styles.notactive]
+                        .filter(Boolean)
+                        .join(" ")
                 }
-            > Projects </button>
+            >
+                Projects
+            </NavLink>
         </nav>
     );
 }
-
-export default NavBar;

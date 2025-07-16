@@ -1,4 +1,5 @@
-import React, { ReactElement } from "react";
+import React from "react";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import { createNoise3D } from "simplex-noise";
 
 import "./App.scss";
@@ -6,30 +7,14 @@ import styles from "./App.module.scss";
 
 import HomePage from "./HomePage/Main";
 import NavBar from "./NavBar/Main";
+import ProjectsPage from "./ProjectsPage/Main";
 
 function App() {
-    const [currentPage, setCurrentPage] = React.useState(<HomePage />);
-    const currentChangingPage = React.useRef<ReactElement>(currentPage);
-    const [changingPage, setChangingPage] = React.useState(false);
-
-    const changePage = (page: React.ReactElement) => {
-        if (changingPage) return;
-
-        currentChangingPage.current = page;
-        setChangingPage(true);
-        setCurrentPage(<div className={styles.fadeOut}>{currentPage}</div>);
-        setTimeout(() => {
-            setCurrentPage(<div className={styles.fadeIn}>{page}</div>);
-            setTimeout(() => {
-                setCurrentPage(page);
-                setChangingPage(false);
-            }, 100);
-        }, 100);
-    };
-
+    // Canvas refs for noise background
     const canvasRef = React.useRef<HTMLCanvasElement | null>(null);
     const animationFrameId = React.useRef(0);
 
+    // Noise animation effect
     React.useEffect(() => {
         const noiseGen = createNoise3D();
         const noise = (x: number, y: number, z: number) => {
@@ -110,14 +95,19 @@ function App() {
     }, []);
 
     return (
-        <div>
-            <canvas ref={canvasRef} />
-            <NavBar
-                currentChangingPage={currentChangingPage}
-                changePage={changePage}
-            />
-            {currentPage}
-        </div>
+        <Router>
+            <div>
+                <canvas ref={canvasRef} className={styles.backgroundCanvas} />
+                <NavBar />
+
+                <div className={styles.pageContainer}>
+                    <Routes>
+                        <Route path="/" element={<HomePage />} />
+                        <Route path="/projects" element={<ProjectsPage />} />
+                    </Routes>
+                </div>
+            </div>
+        </Router>
     );
 }
 
