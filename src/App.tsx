@@ -10,11 +10,9 @@ import NavBar from "./NavBar/Main";
 import ProjectsPage from "./ProjectsPage/Main";
 
 function App() {
-    // Canvas refs for noise background
     const canvasRef = React.useRef<HTMLCanvasElement | null>(null);
     const animationFrameId = React.useRef(0);
 
-    // Noise animation effect
     React.useEffect(() => {
         const noiseGen = createNoise3D();
         const noise = (x: number, y: number, z: number) => {
@@ -53,19 +51,16 @@ function App() {
         const draw = (timestamp: number) => {
             if (!ctx) return;
 
-            // Clear the canvas before drawing new frame
             ctx.clearRect(0, 0, fullWidth, fullHeight);
 
             for (let x = 0; x < width; x++) {
                 for (let y = 0; y < height; y++) {
-                    // Generate Perlin noise for the current pixel
                     const nx = (x * scale) / resolution;
                     const ny = (y * scale) / resolution;
                     const noiseValue =
-                        noise(nx, ny, (timestamp / 1000) * speed) - 0.8;
+                        noise(nx, ny, (timestamp / 1000) * speed) - 1.0;
 
-                    // Map the noise value to a grayscale color
-                    const color = Math.floor((noiseValue + 1) * 128); // Normalize to [0, 255]
+                    const color = Math.floor((noiseValue + 1) * 128);
                     ctx.fillStyle = `rgb(${color}, ${color}, ${color})`;
                     ctx.fillRect(x, y, 1, 1);
                 }
@@ -88,7 +83,6 @@ function App() {
 
         animationFrameId.current = requestAnimationFrame(draw);
 
-        // Clean up on unmount
         return () => {
             cancelAnimationFrame(animationFrameId.current);
         };
